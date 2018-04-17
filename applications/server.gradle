@@ -13,6 +13,10 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
 
+    //This dependency is added to enable and report circuit breaks to circuit breaker dashboard
+    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker"
+
+
     testCompile project(":components:test-support")
 }
 
