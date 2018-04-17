@@ -25,14 +25,14 @@ public class ProjectClient {
     @HystrixCommand(fallbackMethod = "getProjectFromCache")
     public ProjectInfo getProject(long projectId) {
         //Retrieving the project based on the Id
-        ProjectInfo project = restOperations.getForObject(endpoint+"/projects"+projectId, ProjectInfo.class);
+        ProjectInfo project = restOperations.getForObject(endpoint+"/projects/"+projectId, ProjectInfo.class);
         concurrentMap.put(projectId, project);
         return project;
 
     }
 
     public ProjectInfo getProjectFromCache(long projectId) {
-        logger.info("Getting project with id {} from cache"+ projectId);
+        logger.info("Getting project with id {} from cache "+ projectId);
         //returning the Project Info based on the id passed
         return concurrentMap.get(projectId);
     }
