@@ -1,17 +1,18 @@
 package io.pivotal.pal.tracker.backlog;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestOperations;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.logging.Logger;
+
 
 public class ProjectClient {
 
-    private final Logger logger = (Logger) LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private Map<Long,ProjectInfo> concurrentMap = new ConcurrentHashMap<>();
     private final RestOperations restOperations;
     private final String endpoint;
